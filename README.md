@@ -1,48 +1,40 @@
-# Udagram Image Filtering Microservice
+# Image Filter Project
 
-Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.
+Content
+=============
 
-The project is split into three parts:
-1. [The Simple Frontend](https://github.com/udacity/cloud-developer/tree/master/course-02/exercises/udacity-c2-frontend)
-A basic Ionic client web application which consumes the RestAPI Backend. [Covered in the course]
-2. [The RestAPI Backend](https://github.com/udacity/cloud-developer/tree/master/course-02/exercises/udacity-c2-restapi), a Node-Express server which can be deployed to a cloud service. [Covered in the course]
-3. [The Image Filtering Microservice](https://github.com/udacity/cloud-developer/tree/master/course-02/project/image-filter-starter-code), the final project for the course. It is a Node-Express application which runs a simple script to process images. [Your assignment]
+###Elastic Bean Stalk URL:
+                
+http://image-filter-start-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://nationaltoday.com/wp-content/uploads/2020/08/international-cat-day.jpg
 
-## Tasks
+## Specifications to submit the project 
 
-### Setup Node Environment
+#### 1.  Development Server:
 
-You'll need to create a new node server. Open a new terminal within the project directory and run:
+1- Starting the server with npm run dev runs a local instance of the server with no errors
+<img width="661" alt="image" src="https://user-images.githubusercontent.com/54766487/212855510-42eaac50-aa00-4572-8ddb-a301a3d1fb6e.png">
 
-1. Initialize a new project: `npm i`
-2. run the development server with `npm run dev`
+2- The stubbed @TODO1 endpoint in src/server.ts is completed and accepts valid requests including:
 
-### Create a new endpoint in the server.ts file
+<img width="953" alt="image" src="https://user-images.githubusercontent.com/54766487/212856225-821e9e1c-2f9c-4ac8-bfdc-86e7ae53743b.png">
 
-The starter code has a task for you to complete an endpoint in `./src/server.ts` which uses query parameter to download an image from a public URL, filter the image, and return the result.
+3- Successful responses have a 200 code, at least one error code for caught errors (i.e. 422)
 
-We've included a few helper functions to handle some of these concepts and we're importing it for you at the top of the `./src/server.ts`  file.
+1. Sending Wrong url "http://localhost:8082/filteredimage?image_url=https://nationaltoday.com/wp-content/uploads/2020/08/international-cat-da.jpg"
+<img width="677" alt="image" src="https://user-images.githubusercontent.com/54766487/212856678-6c8cb2e4-a10c-4e9f-9a0f-b5da0c2b5916.png">
 
-```typescript
-import {filterImageFromURL, deleteLocalFiles} from './util/util';
-```
+2. not sending a url "http://localhost:8082/filteredimage?image_url="
+<img width="667" alt="image" src="https://user-images.githubusercontent.com/54766487/212856918-2e1b66e5-8110-4965-be5d-abbfe4ed64b4.png">
 
-### Deploying your system
+#### 2.  Elastic Beanstalk Deployment:
+1- The project demonstrates the ability to create functional cloud deployments 
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/54766487/212857482-143309b4-ce4d-44e8-b4ca-31633beacf8b.png">
 
-Follow the process described in the course to `eb init` a new application and `eb create` a new environment to deploy your image-filter service! Don't forget you can use `eb deploy` to push changes.
+2- The project was deployed using the AWS Elastic Beanstalk CLI eb init, eb create, and eb deploy commands.
+<img width="665" alt="image" src="https://user-images.githubusercontent.com/54766487/212857885-5f6d5903-3ac0-4869-a6d6-d6603ae99e70.png">
 
-## Stand Out (Optional)
+<img width="674" alt="image" src="https://user-images.githubusercontent.com/54766487/212857983-b1f7c7c3-5601-425b-ad01-7b3d80a04f0f.png">
 
-### Refactor the course RESTapi
+<img width="670" alt="image" src="https://user-images.githubusercontent.com/54766487/212858096-c6df096a-7e22-4a1c-9c45-33ed4ce05b9f.png">
 
-If you're feeling up to it, refactor the course RESTapi to make a request to your newly provisioned image server.
 
-### Authentication
-
-Prevent requests without valid authentication headers.
-> !!NOTE if you choose to submit this, make sure to add the token to the postman collection and export the postman collection file to your submission so we can review!
-
-### Custom Domain Name
-
-Add your own domain name and have it point to the running services (try adding a subdomain name to point to the processing server)
-> !NOTE: Domain names are not included in AWS’ free tier and will incur a cost.
