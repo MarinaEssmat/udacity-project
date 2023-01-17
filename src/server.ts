@@ -27,7 +27,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // RETURNS
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
-   app.get( "/filteredimage/", async ( req , res  ) => {
+  app.get( "/filteredimage/", async (req:express.Request, res:express.Response) => {
     // destruct our path params
     let { image_url } = req.query;
     console.log(image_url);
@@ -37,14 +37,13 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       return res.status(400).send(`image url is required`);
     }
 
-    let image = filterImageFromURL(image_url); 
+    let image= filterImageFromURL(image_url); 
 
     image.then(
     (response) => {
         res.status(200).sendFile(response, err => {
       if (err) {
-          console.log(err);
-          res.sendStatus(500);
+          return res.status(500).send(`Error while handling the image response`);
       }
           deleteLocalFiles([response]);
 
@@ -56,7 +55,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     }
 )
 .catch((error) => {
-    return res.status(404).send(`Error happens while trying to get the image`);
+    return res.status(500).send(`Error happens while trying to get the image`);
 
 })
 
