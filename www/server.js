@@ -55,7 +55,7 @@ const util_1 = require("./util/util");
             return res.status(404).send(`image is not found`);
         })
             .catch((error) => {
-            return res.status(404).send(`image is not found`);
+            return res.status(404).send(`Error happens while trying to get the image`);
         });
     }));
     /**************************************************************************** */
