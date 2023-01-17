@@ -3,7 +3,7 @@
 Content
 =============
 
-###Elastic Bean Stalk URL:
+### Elastic Bean Stalk URL:
                 
 http://image-filter-start-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://nationaltoday.com/wp-content/uploads/2020/08/international-cat-day.jpg
 
